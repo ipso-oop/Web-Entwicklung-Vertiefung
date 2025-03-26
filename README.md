@@ -1,4 +1,14 @@
-# React + Vite
+# Web-Entwicklung-Vertiefung
+
+This repository contains various examples and exercises for advanced web development topics, focusing on React and Vite.
+
+## Repository Structure
+
+- `SPA/React/Beispiele/Components-States-Routing`: Examples demonstrating the use of components, states, and routing in React.
+- `SPA/React/Beispiele/Components-Styling`: Examples showcasing different styling techniques in React, including CSS, CSS Modules, Styled Components, and inline styles.
+- `SPA/React/Beispiele/Kontext-Api`: Examples illustrating the use of the Context API in React for state management.
+
+## Setup Instructions
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
