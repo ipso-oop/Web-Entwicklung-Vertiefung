@@ -1,0 +1,16 @@
+type Task {
+  id: ID!
+  title: String!
+  description: String!
+  completed: Boolean!
+}
+
+type Query {
+  tasks(completed: Boolean): [Task!]!
+  task(id: ID!): Task
+}
+
+type Mutation {
+  updateTask(id: ID!, title: String!, description: String!, completed: Boolean!): Task!
+  deleteTask(id: ID!): Boolean!
+} 
