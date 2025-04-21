@@ -1,0 +1,18 @@
+{
+  "name": "messaging-example",
+  "version": "1.0.0",
+  "description": "Example of a messaging architecture with RabbitMQ",
+  "main": "restServer.js",
+  "scripts": {
+    "start:api": "node restServer.js",
+    "start:notifications": "node notificationService.js",
+    "start:all": "concurrently \"npm run start:api\" \"npm run start:notifications\""
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "amqplib": "^0.10.3",
+    "swagger-ui-express": "^5.0.0",
+    "swagger-jsdoc": "^6.2.8",
+    "concurrently": "^8.2.2"
+  }
+}

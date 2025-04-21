@@ -1,0 +1,49 @@
+@startuml
+actor User
+participant "React Frontend\n(Port 3002)" as Frontend
+participant "REST API\n(Port 3000)" as API
+participant "RabbitMQ" as Queue
+participant "Notification Service\n(Port 3001)" as Notification
+
+== Kontakte Anzeigen ==
+User -> Frontend: Öffnet Anwendung
+Frontend -> API: GET /api/v1/contacts
+API --> Frontend: Liste der Kontakte
+Frontend --> User: Zeigt Kontaktliste
+
+== Kontakt Erstellen ==
+User -> Frontend: Klickt "Neuer Kontakt"
+Frontend --> User: Zeigt Formular
+User -> Frontend: Füllt Formular aus
+Frontend -> API: POST /api/v1/contacts
+API -> Queue: Publiziert contact.created Event
+Queue -> Notification: Sendet Event
+Notification --> Queue: Bestätigt Empfang
+API --> Frontend: Bestätigt Erstellung
+Frontend --> User: Zeigt Erfolgsbestätigung
+
+== Kontakt Bearbeiten ==
+User -> Frontend: Klickt "Bearbeiten"
+Frontend -> API: GET /api/v1/contacts/{id}
+API --> Frontend: Kontaktdaten
+Frontend --> User: Zeigt Bearbeitungsformular
+User -> Frontend: Ändert Daten
+Frontend -> API: PUT /api/v1/contacts/{id}
+API -> Queue: Publiziert contact.updated Event
+Queue -> Notification: Sendet Event
+Notification --> Queue: Bestätigt Empfang
+API --> Frontend: Bestätigt Aktualisierung
+Frontend --> User: Zeigt Erfolgsbestätigung
+
+== Kontakt Löschen ==
+User -> Frontend: Klickt "Löschen"
+Frontend --> User: Bestätigungsdialog
+User -> Frontend: Bestätigt Löschung
+Frontend -> API: DELETE /api/v1/contacts/{id}
+API -> Queue: Publiziert contact.deleted Event
+Queue -> Notification: Sendet Event
+Notification --> Queue: Bestätigt Empfang
+API --> Frontend: Bestätigt Löschung
+Frontend --> User: Aktualisiert Kontaktliste
+
+@enduml 

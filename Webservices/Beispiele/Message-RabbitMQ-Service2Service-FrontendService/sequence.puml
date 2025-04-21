@@ -1,0 +1,69 @@
+@startuml Service-to-Service Communication Example
+
+' Actors
+actor Client
+participant "REST API Service" as API
+participant "RabbitMQ" as MQ
+participant "Notification Service" as Notify
+
+' Styles
+skinparam sequence {
+    ArrowColor #000000
+    ActorBorderColor #000000
+    ParticipantBorderColor #000000
+    ParticipantBackgroundColor #FFFFFF
+}
+
+' Title
+title Service-to-Service Communication with RabbitMQ
+
+' Sequence
+Client -> API: POST /api/v1/contacts
+activate API
+API -> API: Create contact
+API -> MQ: Publish contact.created
+deactivate API
+
+MQ -> Notify: contact.created
+activate Notify
+Notify -> Notify: Handle contact created
+Notify -> Notify: Send email notification
+Notify -> Notify: Send SMS notification
+Notify -> Notify: Store notification
+deactivate Notify
+
+Client -> API: PUT /api/v1/contacts/:id
+activate API
+API -> API: Update contact
+API -> MQ: Publish contact.updated
+deactivate API
+
+MQ -> Notify: contact.updated
+activate Notify
+Notify -> Notify: Handle contact updated
+Notify -> Notify: Send email notification
+Notify -> Notify: Store notification
+deactivate Notify
+
+Client -> API: DELETE /api/v1/contacts/:id
+activate API
+API -> API: Delete contact
+API -> MQ: Publish contact.deleted
+deactivate API
+
+MQ -> Notify: contact.deleted
+activate Notify
+Notify -> Notify: Handle contact deleted
+Notify -> Notify: Send email notification
+Notify -> Notify: Store notification
+deactivate Notify
+
+' Legend
+legend right
+    |Color|Description|
+    |<#FFFFFF>|Service|
+    |<#FFD700>|Message Queue|
+    |<#98FB98>|Notification|
+endlegend
+
+@enduml 
