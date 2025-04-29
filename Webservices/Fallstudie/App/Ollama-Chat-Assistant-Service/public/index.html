@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Chatbot with RAG</title>
+    <link href="styles.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <div class="chat-container">
+            <div class="chat-header">
+                <h1>AI Assistant</h1>
+                <div class="model-selector">
+                    <button id="localButton" class="model-btn active" onclick="switchModel('local')">Local Model</button>
+                    <button id="externalButton" class="model-btn" onclick="switchModel('external')">External Model</button>
+                </div>
+            </div>
+            
+            <div id="chat-messages" class="messages">
+                <div class="message bot-message">
+                    Hello! I'm your AI assistant. You can upload documents and I'll help you analyze them. How can I help you today?
+                </div>
+            </div>
+            
+            <div class="input-container">
+                <div class="file-upload-container">
+                    <input type="file" id="file-input" accept=".txt,.pdf" multiple class="file-input" />
+                    <label for="file-input" class="file-label">
+                        Upload Files
+                    </label>
+                    <div id="file-list" class="file-list"></div>
+                </div>
+                <div class="message-input-container">
+                    <textarea 
+                        id="prompt-input" 
+                        placeholder="Type your message here..."
+                        rows="2"
+                    ></textarea>
+                    <button id="send-button" onclick="sendMessage()" class="send-btn">
+                        Send Message
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
