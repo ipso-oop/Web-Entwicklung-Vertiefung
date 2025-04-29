@@ -1,0 +1,124 @@
+type Task {
+  id: ID!
+  title: String!
+  description: String!
+  completed: Boolean!
+}
+
+# V2 Task mit erweiterten Funktionen
+type TaskV2 {
+  id: ID!
+  title: String!
+  description: String!
+  completed: Boolean!
+  createdAt: String!
+  updatedAt: String!
+  priority: Priority!
+  dueDate: String
+  tags: [String!]
+}
+
+enum Priority {
+  LOW
+  MEDIUM
+  HIGH
+}
+
+type Error {
+  code: String!
+  message: String!
+}
+
+type TaskResponse {
+  success: Boolean!
+  task: Task
+  error: Error
+}
+
+type TaskV2Response {
+  success: Boolean!
+  task: TaskV2
+  error: Error
+}
+
+type TasksResponse {
+  success: Boolean!
+  tasks: [Task!]
+  error: Error
+}
+
+type TasksV2Response {
+  success: Boolean!
+  tasks: [TaskV2!]
+  error: Error
+}
+
+type DeleteResponse {
+  success: Boolean!
+  error: Error
+}
+
+input CreateTaskInput {
+  title: String!
+  description: String!
+  completed: Boolean = false
+}
+
+input UpdateTaskInput {
+  title: String
+  description: String
+  completed: Boolean
+}
+
+input CreateTaskV2Input {
+  title: String!
+  description: String!
+  completed: Boolean = false
+  priority: Priority = MEDIUM
+  dueDate: String
+  tags: [String!]
+}
+
+input UpdateTaskV2Input {
+  title: String
+  description: String
+  completed: Boolean
+  priority: Priority
+  dueDate: String
+  tags: [String!]
+}
+
+type V1Query {
+  tasks(completed: Boolean): TasksResponse!
+  task(id: ID!): TaskResponse!
+}
+
+type V1Mutation {
+  createTask(input: CreateTaskInput!): TaskResponse!
+  updateTask(id: ID!, input: UpdateTaskInput!): TaskResponse!
+  deleteTask(id: ID!): DeleteResponse!
+}
+
+type V2Query {
+  tasks(completed: Boolean, priority: Priority): TasksV2Response!
+  task(id: ID!): TaskV2Response!
+  tasksByTag(tag: String!): TasksV2Response!
+}
+
+type V2Mutation {
+  createTask(input: CreateTaskV2Input!): TaskV2Response!
+  updateTask(id: ID!, input: UpdateTaskV2Input!): TaskV2Response!
+  deleteTask(id: ID!): DeleteResponse!
+  addTag(id: ID!, tag: String!): TaskV2Response!
+  removeTag(id: ID!, tag: String!): TaskV2Response!
+}
+
+type Query {
+  v1: V1Query!
+  v2: V2Query!
+}
+
+type Mutation {
+  v1: V1Mutation!
+  v2: V2Mutation!
+} 
