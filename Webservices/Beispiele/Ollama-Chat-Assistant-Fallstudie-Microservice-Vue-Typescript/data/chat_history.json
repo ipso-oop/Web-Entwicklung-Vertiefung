@@ -72,31 +72,11 @@
   {
     "role": "user",
     "content": "test",
-    "timestamp": "2025-05-13T16:30:26.050Z"
+    "timestamp": "2025-05-12T19:34:49.446Z"
   },
   {
     "role": "bot",
-    "content": "It looks like we've established the basics.\n\nAs your teacher, I'll be covering a range of topics in web development, cyber security, object-oriented programming, and software engineering. Feel free to ask me any questions or seek clarification on any of the concepts we'll be exploring.\n\nWhat would you like to start with? Would you like to:\n\n1. Dive into web development (e.g., HTML, CSS, JavaScript, React, Angular)?\n2. Explore cyber security fundamentals (e.g., network security, cryptography, threat modeling)?\n3. Learn object-oriented programming principles and concepts?\n4. Discuss software engineering best practices and design patterns?\n\nLet me know, and we'll get started!",
-    "timestamp": "2025-05-13T16:31:47.985Z"
-  },
-  {
-    "role": "user",
-    "content": "test",
-    "timestamp": "2025-05-13T16:41:41.119Z"
-  },
-  {
-    "role": "bot",
-    "content": "It seems like you're just testing to see if our conversation is working properly. Is there something specific you'd like to discuss or learn about? I can help with topics such as:\n\n1. Web Development (Front-end/Back-end development, React, Angular, Vue.js, etc.)\n2. Cyber Security (Networking, Cryptography, Vulnerability Assessment, Penetration Testing, etc.)\n3. Object Oriented Programming (OOP concepts, Design Patterns, etc.)\n4. Software Engineering (Agile Methodologies, Scrum, Kanban, etc.)\n\nLet me know what you need help with!",
-    "timestamp": "2025-05-13T16:42:46.240Z"
-  },
-  {
-    "role": "user",
-    "content": "test",
-    "timestamp": "2025-05-13T18:42:38.615Z"
-  },
-  {
-    "role": "bot",
-    "content": "It looks like you're testing the waters!\n\nHow can I assist you today? Are you looking to learn something new in web development, cyber security, or perhaps object-oriented programming? Or maybe you'd like to discuss software engineering concepts? Let me know, and I'll do my best to help!",
-    "timestamp": "2025-05-13T18:43:19.187Z"
+    "content": "It looks like you've just tested the waters.\n\nIs there something specific you'd like to learn or discuss? I'm here to help with:\n\n1. Web development (HTML, CSS, JavaScript, React, Angular, Vue)\n2. Cyber security (network security, cryptography, threat analysis)\n3. Object-Oriented Programming (OOP concepts, design patterns)\n4. Software engineering (agile methodologies, DevOps, testing)\n\nLet me know what's on your mind!",
+    "timestamp": "2025-05-12T19:36:53.010Z"
   }
 ]

@@ -1,0 +1,48 @@
+{
+  "name": "ollama-chat-assistant",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev:frontend": "vite",
+    "dev:backend": "nodemon server.js",
+    "dev": "concurrently \"npm run dev:frontend\" \"npm run dev:backend\"",
+    "build": "vue-tsc && vite build",
+    "preview": "vite preview",
+    "start": "node server.js",
+    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js",
+    "test:watch": "node --experimental-vm-modules node_modules/jest/bin/jest.js --watch",
+    "test:coverage": "node --experimental-vm-modules node_modules/jest/bin/jest.js --coverage",
+    "test:unit": "node --experimental-vm-modules node_modules/jest/bin/jest.js --testPathPattern=src/.*\\.test\\.js",
+    "test:integration": "node --experimental-vm-modules node_modules/jest/bin/jest.js --testPathPattern=tests/integration/.*\\.test\\.js"
+  },
+  "dependencies": {
+    "concurrently": "^8.2.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "multer": "^1.4.5-lts.1",
+    "node-fetch": "^3.3.0",
+    "nodemon": "^3.0.2",
+    "pdf2json": "^2.0.1",
+    "vue": "^3.3.4",
+    "vue-router": "^4.2.4"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.21.4",
+    "@babel/plugin-syntax-import-meta": "^7.10.4",
+    "@babel/preset-env": "^7.21.4",
+    "@types/node": "^22.15.17",
+    "@vitejs/plugin-vue": "^4.3.4",
+    "@vue/test-utils": "^2.4.6",
+    "@vue/tsconfig": "^0.7.0",
+    "@vue/vue3-jest": "^29.2.6",
+    "babel-jest": "^29.5.0",
+    "jest": "^29.5.0",
+    "jsdom": "^26.1.0",
+    "supertest": "^6.3.3",
+    "typescript": "^5.8.3",
+    "vite": "^4.3.9",
+    "vue-tsc": "^1.8.27"
+  }
+}
