@@ -1,0 +1,39 @@
+@startuml
+actor User
+participant "Frontend (script.js)" as Frontend
+participant "Backend Server" as Backend
+participant "Ollama Service" as Ollama
+participant "File System" as FileSystem
+
+== Datei-Upload ==
+User -> Frontend : Wählt Datei aus
+Frontend -> Backend : POST /api/files/upload (Datei)
+Backend -> FileSystem : Speichere Datei
+FileSystem --> Backend : Bestätigung + Datei-ID
+Backend --> Frontend : Datei-Upload erfolgreich (Datei-ID)
+Frontend -> User : Zeigt Datei in UI
+
+== Chat-Nachricht senden ==
+User -> Frontend : Gibt Nachricht ein
+Frontend -> Backend : POST /api/chat/:type (Prompt, Datei-IDs)
+Backend -> FileSystem : Lade Datei-Inhalte (optional)
+FileSystem --> Backend : Datei-Inhalte
+Backend -> Ollama : Generiere Antwort (Prompt + Kontext)
+Ollama --> Backend : Antwort
+Backend --> Frontend : Antwort
+Frontend -> User : Zeigt Antwort in UI
+
+== Chat-Historie laden ==
+Frontend -> Backend : GET /api/history/load
+Backend -> FileSystem : Lade Verlauf
+FileSystem --> Backend : Verlauf
+Backend --> Frontend : Verlauf
+Frontend -> User : Zeigt Verlauf
+
+== Chat-Historie speichern ==
+Frontend -> Backend : POST /api/history/save (Rolle, Inhalt)
+Backend -> FileSystem : Speichere Verlauf
+FileSystem --> Backend : Bestätigung
+Backend --> Frontend : Bestätigung
+
+@enduml 
