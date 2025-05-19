@@ -1,0 +1,65 @@
+.rating-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.rating-item {
+  background-color: #f5f5f5;
+  border-radius: 8px;
+  padding: 1rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.rating-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.stars {
+  display: flex;
+  gap: 0.25rem;
+}
+
+.star {
+  color: #ccc;
+  font-size: 1.2rem;
+}
+
+.star.active {
+  color: #ffd700;
+}
+
+.rating-date {
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.rating-comment {
+  color: #333;
+  font-size: 1rem;
+  line-height: 1.4;
+}
+
+.loading {
+  text-align: center;
+  color: #666;
+  padding: 1rem;
+}
+
+.error {
+  text-align: center;
+  color: #ff0000;
+  padding: 1rem;
+}
+
+.no-ratings {
+  text-align: center;
+  color: #666;
+  padding: 1rem;
+  font-style: italic;
+} 

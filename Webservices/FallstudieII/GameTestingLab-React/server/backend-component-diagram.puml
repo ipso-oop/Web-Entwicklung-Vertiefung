@@ -1,0 +1,52 @@
+@startuml Backend-Komponentendiagramm
+
+' Styling
+skinparam componentStyle uml2
+skinparam backgroundColor white
+skinparam component {
+    BackgroundColor LightBlue
+    BorderColor DarkBlue
+    ArrowColor DarkBlue
+}
+
+package "Express App" {
+    [index.js] as MainApp
+    [authRoutes] as AuthRoutes
+    [ratingsRoutes] as RatingsRoutes
+}
+
+package "Middleware" {
+    [authMiddleware] as AuthMiddleware
+}
+
+package "Models" {
+    [UserModel] as UserModel
+    [RatingModel] as RatingModel
+}
+
+package "Config" {
+    [db.js] as DBConfig
+}
+
+database "MongoDB" as MongoDB
+
+' Beziehungen
+MainApp --> AuthRoutes : "/api/auth"
+MainApp --> RatingsRoutes : "/api/ratings"
+MainApp --> AuthMiddleware : "use(express.json, cors)"
+MainApp --> DBConfig : "connectDB()"
+
+AuthRoutes --> UserModel
+AuthRoutes --> AuthMiddleware
+AuthRoutes ..> MainApp
+
+RatingsRoutes --> RatingModel
+RatingsRoutes --> AuthMiddleware
+RatingsRoutes ..> MainApp
+RatingModel --> UserModel : "user ref"
+
+DBConfig --> MongoDB
+UserModel --> MongoDB
+RatingModel --> MongoDB
+
+@enduml 
