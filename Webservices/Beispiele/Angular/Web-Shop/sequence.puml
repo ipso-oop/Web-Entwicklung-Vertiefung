@@ -1,0 +1,51 @@
+@startuml Web Shop Sequence
+
+actor User
+participant "AppComponent" as App
+participant "ProductListComponent" as ProductList
+participant "CartComponent" as Cart
+
+== Initial Load ==
+User -> App: Opens application
+activate App
+App -> ProductList: Initialize product list
+activate ProductList
+ProductList --> App: Display products
+deactivate ProductList
+App -> Cart: Initialize empty cart
+activate Cart
+Cart --> App: Display empty cart
+deactivate Cart
+deactivate App
+
+== Add Product to Cart ==
+User -> ProductList: Clicks "In den Warenkorb"
+activate ProductList
+ProductList -> ProductList: onAddToCart(product)
+ProductList -> App: addToCart(product)
+deactivate ProductList
+activate App
+App -> App: addToCart(product)
+App -> Cart: Update cart [cart]
+activate Cart
+Cart -> Cart: Calculate totalPrice
+Cart --> App: Display updated cart
+deactivate Cart
+deactivate App
+
+== Remove Product from Cart ==
+User -> Cart: Clicks "Entfernen"
+activate Cart
+Cart -> Cart: onRemoveFromCart(productId)
+Cart -> App: removeFromCart(productId)
+deactivate Cart
+activate App
+App -> App: removeFromCart(productId)
+App -> Cart: Update cart [cart]
+activate Cart
+Cart -> Cart: Calculate totalPrice
+Cart --> App: Display updated cart
+deactivate Cart
+deactivate App
+
+@enduml 
