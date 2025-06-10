@@ -1,0 +1,21 @@
+<div class="payment-container">
+  <div *ngIf="error" class="error-message">
+    {{ error }}
+    <button *ngIf="initializationError" (click)="ngOnInit()" class="retry-button">
+      Retry
+    </button>
+  </div>
+
+  <div *ngIf="!stripeLoaded && !error" class="loading-message">
+    <div class="spinner"></div>
+    Loading payment system...
+  </div>
+
+  <button 
+    (click)="initiatePayment()" 
+    [disabled]="loading || !stripeLoaded"
+    class="payment-button">
+    <span *ngIf="loading">Processing...</span>
+    <span *ngIf="!loading">Jetzt bezahlen</span>
+  </button>
+</div> 

@@ -1,0 +1,43 @@
+@startuml Payment Flow
+
+actor User
+participant "Angular Frontend" as Frontend
+participant "Node.js Backend" as Backend
+participant "Stripe API" as Stripe
+
+== Initialisierung ==
+Frontend -> Frontend: loadStripe(publicKey)
+activate Frontend
+Frontend --> Frontend: stripePromise
+deactivate Frontend
+
+== Zahlungsprozess ==
+User -> Frontend: Klickt "Bezahlen"
+activate Frontend
+Frontend -> Frontend: initiatePayment()
+Frontend -> Backend: POST /create-checkout-session
+activate Backend
+Backend -> Stripe: createCheckoutSession()
+activate Stripe
+Stripe --> Backend: sessionId
+deactivate Stripe
+Backend --> Frontend: { id: sessionId }
+deactivate Backend
+
+Frontend -> Frontend: redirectToCheckout(sessionId)
+Frontend -> Stripe: redirectToCheckout({ sessionId })
+activate Stripe
+Stripe --> User: Zeigt Zahlungsformular
+User -> Stripe: Gibt Zahlungsinformationen ein
+Stripe -> Stripe: Verarbeitet Zahlung
+alt Erfolgreiche Zahlung
+    Stripe --> Frontend: Weiterleitung zu success_url
+    Frontend --> User: Zeigt Erfolgsmeldung
+else Fehlgeschlagene Zahlung
+    Stripe --> Frontend: Weiterleitung zu cancel_url
+    Frontend --> User: Zeigt Fehlermeldung
+end
+deactivate Stripe
+deactivate Frontend
+
+@enduml 

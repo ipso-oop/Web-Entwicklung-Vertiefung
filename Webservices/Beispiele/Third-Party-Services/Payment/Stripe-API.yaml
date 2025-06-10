@@ -1,0 +1,96 @@
+info:
+  name: Stripe API Test
+  schema: https://schema.getpostman.com/json/collection/v2.1.0/collection.json
+
+item:
+  - name: Create PaymentIntent
+    request:
+      method: POST
+      header:
+        - key: Authorization
+          value: Bearer {{STRIPE_SECRET_KEY}}
+          type: text
+        - key: Content-Type
+          value: application/x-www-form-urlencoded
+      body:
+        mode: urlencoded
+        urlencoded:
+          - key: amount
+            value: '1999'
+          - key: currency
+            value: eur
+          - key: automatic_payment_methods[enabled]
+            value: 'true'
+      url:
+        raw: https://api.stripe.com/v1/payment_intents
+        host: [https://api.stripe.com]
+        path: [v1, payment_intents]
+
+  - name: Create Customer
+    request:
+      method: POST
+      header:
+        - key: Authorization
+          value: Bearer {{STRIPE_SECRET_KEY}}
+          type: text
+        - key: Content-Type
+          value: application/x-www-form-urlencoded
+      body:
+        mode: urlencoded
+        urlencoded:
+          - key: email
+            value: testuser@example.com
+          - key: name
+            value: Max Mustermann
+      url:
+        raw: https://api.stripe.com/v1/customers
+        host: [https://api.stripe.com]
+        path: [v1, customers]
+
+  - name: List PaymentMethods (Customer)
+    request:
+      method: GET
+      header:
+        - key: Authorization
+          value: Bearer {{STRIPE_SECRET_KEY}}
+          type: text
+      url:
+        raw: https://api.stripe.com/v1/payment_methods?customer={{CUSTOMER_ID}}&type=card
+        host: [https://api.stripe.com]
+        path: [v1, payment_methods]
+        query:
+          - key: customer
+            value: "{{CUSTOMER_ID}}"
+          - key: type
+            value: card
+
+  - name: Create SetupIntent
+    request:
+      method: POST
+      header:
+        - key: Authorization
+          value: Bearer {{STRIPE_SECRET_KEY}}
+          type: text
+        - key: Content-Type
+          value: application/x-www-form-urlencoded
+      body:
+        mode: urlencoded
+        urlencoded:
+          - key: customer
+            value: "{{CUSTOMER_ID}}"
+      url:
+        raw: https://api.stripe.com/v1/setup_intents
+        host: [https://api.stripe.com]
+        path: [v1, setup_intents]
+
+  - name: Get Webhook Events
+    request:
+      method: GET
+      header:
+        - key: Authorization
+          value: Bearer {{STRIPE_SECRET_KEY}}
+          type: text
+      url:
+        raw: https://api.stripe.com/v1/events
+        host: [https://api.stripe.com]
+        path: [v1, events]
