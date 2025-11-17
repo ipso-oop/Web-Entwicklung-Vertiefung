@@ -33,11 +33,11 @@ const ChatInterface: React.FC<ChatInterfaceProps> = ({
       >
         {showOnlyBotMessages ? 'Alle Nachrichten anzeigen' : 'Nur Bot-Nachrichten anzeigen'}
       </button>
-      <div className="messages-container">
+      <div className="chat-messages">
         {filteredMessages.map((message: Message, index: number) => (
           <div 
             key={index} 
-            className={`message ${message.role}`}
+                className={`message ${message.role}-message ${message.loading ? 'loading' : ''}`}
           >
             <div className="message-content">
               {message.loading ? (
@@ -54,13 +54,13 @@ const ChatInterface: React.FC<ChatInterfaceProps> = ({
         ))}
         <div ref={messagesEndRef} />
       </div>
-      <form onSubmit={handleSubmit} className="message-input">
+          <form onSubmit={handleSubmit} className="chat-input-form">
         <input
           type="text"
           value={inputValue}
           onChange={handleInputChange}
           placeholder="Type your message..."
-          className="message-input-field"
+          className="chat-input"
         />
         <button type="submit" className="send-button">
           Send

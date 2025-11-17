@@ -53,5 +53,25 @@
     "role": "bot",
     "content": "It looks like you just sent a test message!\n\nHow can I assist you today? Are you looking to learn about web development, cyber security, or perhaps object oriented programming? Or maybe you need help with software engineering concepts? Let me know, and I'll be happy to guide you!",
     "timestamp": "2025-05-04T15:03:05.710Z"
+  },
+  {
+    "role": "user",
+    "content": "test",
+    "timestamp": "2025-11-17T20:09:29.073Z"
+  },
+  {
+    "role": "bot",
+    "content": "It looks like we've got a test case!\n\nHow can I assist you today? Are you looking for help with web development, cyber security, OOP, software engineering, or something else?",
+    "timestamp": "2025-11-17T20:09:44.230Z"
+  },
+  {
+    "role": "user",
+    "content": "Who are you?",
+    "timestamp": "2025-11-17T20:23:57.111Z"
+  },
+  {
+    "role": "bot",
+    "content": "I am your instructor, here to guide you through the exciting world of web development, cyber security, object-oriented programming, and software engineering.\n\nAs a teacher, my goal is to equip you with the knowledge and skills necessary to build robust, secure, and scalable applications. I'll share my expertise, provide hands-on examples, and help you overcome challenges as we explore these fascinating topics together.\n\nWhether you're a beginner or looking to refresh your skills, I'm here to support your learning journey. So, what would you like to learn about today?",
+    "timestamp": "2025-11-17T20:24:40.123Z"
   }
 ]
