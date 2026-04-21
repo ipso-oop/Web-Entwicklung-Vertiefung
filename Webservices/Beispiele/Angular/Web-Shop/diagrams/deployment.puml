@@ -1,0 +1,18 @@
+@startuml Deployment-Architektur - Web Shop
+
+skinparam nodeStyle rectangle
+skinparam linetype ortho
+
+node "Development Environment" {
+    component "Angular Dev Server\n(ng serve)\nPort: 4200" as DevServer
+}
+
+node "Production Environment" {
+    component "Static Web Server\n(nginx, Apache, etc.)" as WebServer
+    folder "dist/web-shop/\n(Static Files)" as Dist
+}
+
+WebServer --> Dist : "serves"
+
+@enduml
+

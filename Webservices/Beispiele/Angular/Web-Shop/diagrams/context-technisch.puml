@@ -1,0 +1,14 @@
+@startuml Technischer Kontext - Web Shop
+
+skinparam componentStyle rectangle
+skinparam linetype ortho
+
+node "Browser" {
+    component "Angular Application" as AngularApp
+    component "DOM API" as DOM
+}
+
+AngularApp --> DOM : "nutzt"
+
+@enduml
+

@@ -1,0 +1,18 @@
+@startuml Build-Prozess - Web Shop
+
+start
+
+:Source Code\n(TypeScript);
+
+:Angular Compiler;
+
+:Bundling & Optimization;
+
+:Static Files\n(HTML, CSS, JS);
+
+:dist/web-shop/;
+
+stop
+
+@enduml
+

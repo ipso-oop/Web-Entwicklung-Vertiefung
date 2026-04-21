@@ -1,0 +1,23 @@
+@startuml Baustein-Sicht Level 1 - Web Shop
+
+skinparam componentStyle rectangle
+skinparam linetype ortho
+skinparam packageStyle rectangle
+
+package "Web Shop System" {
+    package "Presentation Layer" {
+        component "ProductListComponent" as ProductList
+        component "CartComponent" as Cart
+    }
+    
+    package "Application Layer" {
+        component "AppComponent\n(State Management)" as App
+    }
+}
+
+ProductList --> App : "addToCart Event"
+Cart --> App : "removeFromCart Event"
+App --> Cart : "cart: Product[]"
+
+@enduml
+

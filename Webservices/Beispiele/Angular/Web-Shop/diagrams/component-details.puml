@@ -1,0 +1,30 @@
+@startuml Komponenten-Details - Web Shop
+
+skinparam componentStyle rectangle
+skinparam linetype ortho
+
+component "AppComponent" as App {
+    interface "cart: Product[]" as cartProp
+    interface "addToCart(product)" as addMethod
+    interface "removeFromCart(id)" as removeMethod
+}
+
+component "ProductListComponent" as ProductList {
+    interface "products: Product[]" as productsProp
+    interface "@Output() addToCart" as addEvent
+    interface "onAddToCart(product)" as onAddMethod
+}
+
+component "CartComponent" as Cart {
+    interface "@Input() cart: Product[]" as cartInput
+    interface "@Output() removeFromCart" as removeEvent
+    interface "totalPrice: string" as totalPrice
+    interface "onRemoveFromCart(id)" as onRemoveMethod
+}
+
+ProductList --> App : "addToCart Event"
+App --> Cart : "cart: Product[]"
+Cart --> App : "removeFromCart Event"
+
+@enduml
+

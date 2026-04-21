@@ -1,0 +1,22 @@
+@startuml Fachlicher Kontext - Web Shop
+
+skinparam componentStyle rectangle
+skinparam linetype ortho
+
+actor Benutzer as user
+
+package "Web Shop System" {
+    component "ProductListComponent" as ProductList
+    component "CartComponent" as Cart
+    component "AppComponent\n(Container)" as App
+}
+
+user --> ProductList : "Zeigt Produkte an"
+user --> Cart : "Zeigt Warenkorb an"
+
+ProductList --> App : "addToCart Event"
+Cart --> App : "removeFromCart Event"
+App --> Cart : "cart: Product[]"
+
+@enduml
+

@@ -43,5 +43,25 @@
     "role": "bot",
     "content": "It seems like you're just testing to see if I'm up and running correctly.\n\nIs there anything specific you'd like to know or discuss regarding web development, cyber security, object-oriented programming, or software engineering? I'm here to help with any questions or topics you'd like to explore.",
     "timestamp": "2025-04-29T10:50:40.072Z"
+  },
+  {
+    "role": "user",
+    "content": "test",
+    "timestamp": "2025-11-16T11:49:08.257Z"
+  },
+  {
+    "role": "bot",
+    "content": "It looks like you just sent a test message.\n\nIs there anything specific you'd like to chat about? Do you have any questions or topics related to web development, cyber security, object-oriented programming, or software engineering that you'd like to discuss?\n\nI'm here to help and provide guidance on your learning journey.",
+    "timestamp": "2025-11-16T11:49:48.282Z"
+  },
+  {
+    "role": "user",
+    "content": "test",
+    "timestamp": "2025-11-17T17:52:29.332Z"
+  },
+  {
+    "role": "bot",
+    "content": "It seems like you're ready to learn something new! What would you like to explore today?\n\nHere are some topics I can help with:\n\n1. **Web Development**: HTML, CSS, JavaScript, React, Angular, Vue.js\n2. **Cyber Security**: Networking fundamentals, cryptography, threat analysis, security testing\n3. **Object Oriented Programming (OOP)**: Principles, concepts, and best practices for designing robust software\n4. **Software Engineering**: Design patterns, Agile methodologies, DevOps, and more\n\nWhat's your area of interest?",
+    "timestamp": "2025-11-17T17:53:11.478Z"
   }
 ]

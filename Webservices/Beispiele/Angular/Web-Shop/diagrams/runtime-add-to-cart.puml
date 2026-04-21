@@ -1,0 +1,28 @@
+@startuml Laufzeitsicht - Produkt zum Warenkorb hinzufügen
+
+actor User
+participant "ProductListComponent" as ProductList
+participant "AppComponent" as App
+participant "CartComponent" as Cart
+
+User -> ProductList: Klickt "In den Warenkorb"
+activate ProductList
+
+ProductList -> ProductList: onAddToCart(product)
+ProductList -> App: emit(addToCart, product)
+deactivate ProductList
+activate App
+
+App -> App: addToCart(product)
+note right: cart.push(product)
+
+App -> Cart: [cart] Input Binding
+activate Cart
+
+Cart -> Cart: Calculate totalPrice
+Cart --> User: UI Update
+deactivate Cart
+deactivate App
+
+@enduml
+

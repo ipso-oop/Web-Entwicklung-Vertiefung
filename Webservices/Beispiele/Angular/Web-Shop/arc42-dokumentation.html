@@ -1,0 +1,939 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>arc42 Dokumentation: Web Shop</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f5f5f5;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border-radius: 8px;
+        }
+        
+        h1 {
+            color: #2c3e50;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 10px;
+            margin-bottom: 30px;
+            font-size: 2.5em;
+        }
+        
+        h2 {
+            color: #34495e;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            padding-top: 20px;
+            border-top: 2px solid #ecf0f1;
+            font-size: 2em;
+        }
+        
+        h3 {
+            color: #555;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-size: 1.5em;
+        }
+        
+        h4 {
+            color: #666;
+            margin-top: 20px;
+            margin-bottom: 10px;
+            font-size: 1.2em;
+        }
+        
+        p {
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+        
+        ul, ol {
+            margin-left: 30px;
+            margin-bottom: 15px;
+        }
+        
+        li {
+            margin-bottom: 8px;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        th {
+            background-color: #3498db;
+            color: white;
+            padding: 12px;
+            text-align: left;
+            font-weight: 600;
+        }
+        
+        td {
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+        
+        tr:hover {
+            background-color: #e8f4f8;
+        }
+        
+        code {
+            background-color: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+            color: #e83e8c;
+        }
+        
+        pre {
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+            margin: 20px 0;
+        }
+        
+        pre code {
+            background-color: transparent;
+            color: inherit;
+            padding: 0;
+        }
+        
+        blockquote {
+            border-left: 4px solid #3498db;
+            padding-left: 20px;
+            margin: 20px 0;
+            color: #666;
+            font-style: italic;
+        }
+        
+        hr {
+            border: none;
+            border-top: 2px solid #ecf0f1;
+            margin: 40px 0;
+        }
+        
+        .toc {
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-radius: 5px;
+            margin-bottom: 30px;
+        }
+        
+        .toc h2 {
+            margin-top: 0;
+            border-top: none;
+        }
+        
+        .toc ul {
+            list-style-type: none;
+            margin-left: 0;
+        }
+        
+        .toc li {
+            margin-bottom: 5px;
+        }
+        
+        .toc a {
+            color: #3498db;
+            text-decoration: none;
+        }
+        
+        .toc a:hover {
+            text-decoration: underline;
+        }
+        
+        .badge {
+            display: inline-block;
+            padding: 3px 8px;
+            border-radius: 3px;
+            font-size: 0.85em;
+            font-weight: 600;
+        }
+        
+        .badge-success {
+            background-color: #27ae60;
+            color: white;
+        }
+        
+        .badge-warning {
+            background-color: #f39c12;
+            color: white;
+        }
+        
+        .badge-danger {
+            background-color: #e74c3c;
+            color: white;
+        }
+        
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            
+            .container {
+                box-shadow: none;
+                padding: 20px;
+            }
+        }
+        
+        img.diagram {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 20px auto;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            background: white;
+        }
+        
+        .diagram-container {
+            text-align: center;
+            margin: 30px 0;
+        }
+        
+        .diagram-caption {
+            font-style: italic;
+            color: #666;
+            margin-top: 10px;
+            font-size: 0.9em;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+            
+            h1 {
+                font-size: 2em;
+            }
+            
+            h2 {
+                font-size: 1.5em;
+            }
+            
+            table {
+                font-size: 0.9em;
+            }
+            
+            img.diagram {
+                margin: 15px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>arc42 Dokumentation: Web Shop</h1>
+
+        <div class="toc">
+            <h2>Inhaltsverzeichnis</h2>
+            <ul>
+                <li><a href="#1-einführung-und-ziele">1. Einführung und Ziele</a></li>
+                <li><a href="#2-randbedingungen">2. Randbedingungen</a></li>
+                <li><a href="#3-kontextabgrenzung">3. Kontextabgrenzung</a></li>
+                <li><a href="#4-lösungsstrategie">4. Lösungsstrategie</a></li>
+                <li><a href="#5-baustein-sicht">5. Baustein-Sicht</a></li>
+                <li><a href="#6-laufzeitsicht">6. Laufzeitsicht</a></li>
+                <li><a href="#7-verteilungssicht">7. Verteilungssicht</a></li>
+                <li><a href="#8-querschnittliche-konzepte">8. Querschnittliche Konzepte</a></li>
+                <li><a href="#9-architekturentscheidungen">9. Architekturentscheidungen</a></li>
+                <li><a href="#10-qualitätsanforderungen">10. Qualitätsanforderungen</a></li>
+                <li><a href="#11-risiken-und-technische-schulden">11. Risiken und technische Schulden</a></li>
+                <li><a href="#12-glossar">12. Glossar</a></li>
+            </ul>
+        </div>
+
+        <hr>
+
+        <h2 id="1-einführung-und-ziele">1. Einführung und Ziele</h2>
+
+        <h3>1.1 Anforderungen an die Dokumentation</h3>
+        <p>Diese Dokumentation beschreibt die Architektur des Web Shop Systems. Sie richtet sich an:</p>
+        <ul>
+            <li>Entwickler, die am System arbeiten</li>
+            <li>Architekten, die das System verstehen müssen</li>
+            <li>Projektmanager, die einen Überblick benötigen</li>
+        </ul>
+
+        <h3>1.2 Ziele und Anforderungen</h3>
+        <p><strong>Hauptziel:</strong><br>
+        Entwicklung einer einfachen, funktionalen Web-Shop-Anwendung zur Demonstration von Angular-Komponenten und Event-basierter Kommunikation.</p>
+
+        <p><strong>Funktionale Anforderungen:</strong></p>
+        <ul>
+            <li>Anzeige einer Produktliste</li>
+            <li>Hinzufügen von Produkten zum Warenkorb</li>
+            <li>Entfernen von Produkten aus dem Warenkorb</li>
+            <li>Berechnung und Anzeige der Gesamtsumme</li>
+        </ul>
+
+        <p><strong>Nicht-funktionale Anforderungen:</strong></p>
+        <ul>
+            <li>Einfache, wartbare Code-Struktur</li>
+            <li>Responsive Benutzeroberfläche</li>
+            <li>Client-seitige Verarbeitung (kein Backend erforderlich)</li>
+        </ul>
+
+        <h3>1.3 Stakeholder</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Stakeholder</th>
+                    <th>Interesse</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Entwickler</td>
+                    <td>Verständnis der Architektur und Komponentenstruktur</td>
+                </tr>
+                <tr>
+                    <td>Dozenten/Lehrende</td>
+                    <td>Demonstration von Angular-Konzepten</td>
+                </tr>
+                <tr>
+                    <td>Studenten/Lernende</td>
+                    <td>Lernbeispiel für Angular-Entwicklung</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>1.4 Qualitätsziele</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Priorität</th>
+                    <th>Qualitätsziel</th>
+                    <th>Beschreibung</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>Einfachheit</td>
+                    <td>Klare, verständliche Struktur für Lernzwecke</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Wartbarkeit</td>
+                    <td>Gut strukturierter, dokumentierter Code</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>Benutzerfreundlichkeit</td>
+                    <td>Intuitive Bedienung der Web-Shop-Oberfläche</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <hr>
+
+        <h2 id="2-randbedingungen">2. Randbedingungen</h2>
+
+        <h3>2.1 Technische Randbedingungen</h3>
+        <ul>
+            <li><strong>Framework:</strong> Angular 17.2.0</li>
+            <li><strong>Sprache:</strong> TypeScript 5.3.2</li>
+            <li><strong>Build-Tool:</strong> Angular CLI / Angular DevKit</li>
+            <li><strong>Browser:</strong> Moderne Browser mit ES6+ Support</li>
+            <li><strong>Styling:</strong> SCSS</li>
+        </ul>
+
+        <h3>2.2 Organisatorische Randbedingungen</h3>
+        <ul>
+            <li>Verwendung von Angular als Frontend-Framework</li>
+            <li>Keine Backend-Integration erforderlich</li>
+            <li>Statische Produktdaten im Frontend</li>
+        </ul>
+
+        <h3>2.3 Konventionen</h3>
+        <ul>
+            <li>Angular Style Guide</li>
+            <li>TypeScript Best Practices</li>
+            <li>Komponenten-basierte Architektur</li>
+        </ul>
+
+        <hr>
+
+        <h2 id="3-kontextabgrenzung">3. Kontextabgrenzung</h2>
+
+        <h3>3.1 Fachlicher Kontext</h3>
+        <div class="diagram-container">
+            <img src="diagrams/images/Fachlicher Kontext - Web Shop.png" alt="Fachlicher Kontext - Web Shop" class="diagram">
+            <p class="diagram-caption">Abbildung 3.1: Fachlicher Kontext des Web Shop Systems</p>
+        </div>
+
+        <p><strong>Akteure:</strong></p>
+        <ul>
+            <li><strong>Benutzer:</strong> Interagiert mit der Web-Shop-Oberfläche</li>
+        </ul>
+
+        <p><strong>Systemgrenze:</strong></p>
+        <ul>
+            <li>Client-seitige Angular-Anwendung</li>
+            <li>Keine externe API oder Datenbank</li>
+        </ul>
+
+        <h3>3.2 Technischer Kontext</h3>
+        <div class="diagram-container">
+            <img src="diagrams/images/Technischer Kontext - Web Shop.png" alt="Technischer Kontext - Web Shop" class="diagram">
+            <p class="diagram-caption">Abbildung 3.2: Technischer Kontext - Browser-Umgebung</p>
+        </div>
+
+        <p><strong>Externe Schnittstellen:</strong></p>
+        <ul>
+            <li>Browser DOM API</li>
+            <li>Angular Framework APIs</li>
+        </ul>
+
+        <hr>
+
+        <h2 id="4-lösungsstrategie">4. Lösungsstrategie</h2>
+
+        <h3>4.1 Technische Entscheidungen</h3>
+        <p><strong>Architektur-Pattern:</strong></p>
+        <ul>
+            <li><strong>Komponenten-basierte Architektur:</strong> Angular Components</li>
+            <li><strong>Event-basierte Kommunikation:</strong> @Output() EventEmitter für Parent-Child-Kommunikation</li>
+            <li><strong>State Management:</strong> Lokaler State im AppComponent</li>
+        </ul>
+
+        <p><strong>Technologie-Stack:</strong></p>
+        <ul>
+            <li>Angular 17 (Component-basiertes Framework)</li>
+            <li>TypeScript (Typsicherheit)</li>
+            <li>SCSS (Styling)</li>
+            <li>RxJS (für zukünftige Erweiterungen)</li>
+        </ul>
+
+        <h3>4.2 Architekturprinzipien</h3>
+        <ol>
+            <li><strong>Separation of Concerns:</strong> Jede Komponente hat eine klare Verantwortlichkeit</li>
+            <li><strong>Single Responsibility:</strong> Komponenten sind fokussiert auf eine Aufgabe</li>
+            <li><strong>Component Communication:</strong> Parent-Child-Kommunikation über Events und Inputs</li>
+            <li><strong>Datenfluss:</strong> Unidirektionaler Datenfluss von Parent zu Child</li>
+        </ol>
+
+        <hr>
+
+        <h2 id="5-baustein-sicht">5. Baustein-Sicht</h2>
+
+        <h3>5.1 Level 1: Übersicht</h3>
+        <div class="diagram-container">
+            <img src="diagrams/images/Baustein-Sicht Level 1 - Web Shop.png" alt="Baustein-Sicht Level 1 - Web Shop" class="diagram">
+            <p class="diagram-caption">Abbildung 5.1: Baustein-Sicht Level 1 - Schichtenarchitektur</p>
+        </div>
+
+        <h3>5.2 Level 2: Komponenten-Details</h3>
+
+        <h4>5.2.1 AppComponent</h4>
+        <p><strong>Verantwortlichkeit:</strong></p>
+        <ul>
+            <li>Root-Komponente der Anwendung</li>
+            <li>State Management für den Warenkorb</li>
+            <li>Koordination zwischen ProductList und Cart Komponenten</li>
+        </ul>
+
+        <p><strong>Schnittstellen:</strong></p>
+        <ul>
+            <li><code>cart: Product[]</code> - Warenkorb-Array</li>
+            <li><code>addToCart(product: Product): void</code> - Produkt zum Warenkorb hinzufügen</li>
+            <li><code>removeFromCart(productId: number): void</code> - Produkt aus Warenkorb entfernen</li>
+        </ul>
+
+        <p><strong>Abhängigkeiten:</strong></p>
+        <ul>
+            <li>ProductListComponent</li>
+            <li>CartComponent</li>
+        </ul>
+
+        <h4>5.2.2 ProductListComponent</h4>
+        <p><strong>Verantwortlichkeit:</strong></p>
+        <ul>
+            <li>Anzeige der Produktliste</li>
+            <li>Bereitstellung der Funktionalität zum Hinzufügen von Produkten</li>
+        </ul>
+
+        <p><strong>Schnittstellen:</strong></p>
+        <ul>
+            <li><code>products: Product[]</code> - Statische Produktliste</li>
+            <li><code>@Output() addToCart: EventEmitter&lt;Product&gt;</code> - Event zum Hinzufügen</li>
+            <li><code>onAddToCart(product: Product): void</code> - Event-Handler</li>
+        </ul>
+
+        <p><strong>Abhängigkeiten:</strong></p>
+        <ul>
+            <li>Keine (selbstständige Komponente)</li>
+        </ul>
+
+        <h4>5.2.3 CartComponent</h4>
+        <p><strong>Verantwortlichkeit:</strong></p>
+        <ul>
+            <li>Anzeige des Warenkorbs</li>
+            <li>Berechnung der Gesamtsumme</li>
+            <li>Entfernen von Produkten aus dem Warenkorb</li>
+        </ul>
+
+        <p><strong>Schnittstellen:</strong></p>
+        <ul>
+            <li><code>@Input() cart: Product[]</code> - Warenkorb-Daten</li>
+            <li><code>@Output() removeFromCart: EventEmitter&lt;number&gt;</code> - Event zum Entfernen</li>
+            <li><code>totalPrice: string</code> - Berechnete Gesamtsumme (Getter)</li>
+            <li><code>onRemoveFromCart(productId: number): void</code> - Event-Handler</li>
+        </ul>
+
+        <p><strong>Abhängigkeiten:</strong></p>
+        <ul>
+            <li>Keine (selbstständige Komponente)</li>
+        </ul>
+
+        <h4>5.2.4 Komponenten-Übersicht</h4>
+        <div class="diagram-container">
+            <img src="diagrams/images/Komponenten-Details - Web Shop.png" alt="Komponenten-Details - Web Shop" class="diagram">
+            <p class="diagram-caption">Abbildung 5.2.4: Detaillierte Komponenten-Übersicht mit Schnittstellen</p>
+        </div>
+
+        <h3>5.3 Datenmodell</h3>
+        <pre><code>interface Product {
+  id: number;      // Eindeutige Produkt-ID
+  name: string;    // Produktname
+  price: number;   // Preis in CHF
+}</code></pre>
+
+        <hr>
+
+        <h2 id="6-laufzeitsicht">6. Laufzeitsicht</h2>
+
+        <h3>6.1 Szenario: Produkt zum Warenkorb hinzufügen</h3>
+        <div class="diagram-container">
+            <img src="diagrams/images/Laufzeitsicht - Produkt zum Warenkorb hinzufügen.png" alt="Laufzeitsicht - Produkt zum Warenkorb hinzufügen" class="diagram">
+            <p class="diagram-caption">Abbildung 6.1: Sequenzdiagramm - Produkt zum Warenkorb hinzufügen</p>
+        </div>
+
+        <p><strong>Schritte:</strong></p>
+        <ol>
+            <li>Benutzer klickt auf "In den Warenkorb" Button</li>
+            <li>ProductListComponent ruft <code>onAddToCart(product)</code> auf</li>
+            <li>Event <code>addToCart</code> wird an AppComponent emittiert</li>
+            <li>AppComponent fügt Produkt zum <code>cart</code> Array hinzu</li>
+            <li>AppComponent übergibt aktualisiertes <code>cart</code> Array an CartComponent</li>
+            <li>CartComponent berechnet Gesamtsumme neu und aktualisiert die Anzeige</li>
+        </ol>
+
+        <h3>6.2 Szenario: Produkt aus Warenkorb entfernen</h3>
+        <div class="diagram-container">
+            <img src="diagrams/images/Laufzeitsicht - Produkt aus Warenkorb entfernen.png" alt="Laufzeitsicht - Produkt aus Warenkorb entfernen" class="diagram">
+            <p class="diagram-caption">Abbildung 6.2: Sequenzdiagramm - Produkt aus Warenkorb entfernen</p>
+        </div>
+
+        <p><strong>Schritte:</strong></p>
+        <ol>
+            <li>Benutzer klickt auf "Entfernen" Button</li>
+            <li>CartComponent ruft <code>onRemoveFromCart(productId)</code> auf</li>
+            <li>Event <code>removeFromCart</code> wird an AppComponent emittiert</li>
+            <li>AppComponent filtert Produkt aus <code>cart</code> Array</li>
+            <li>AppComponent übergibt aktualisiertes <code>cart</code> Array an CartComponent</li>
+            <li>CartComponent berechnet Gesamtsumme neu und aktualisiert die Anzeige</li>
+        </ol>
+
+        <h3>6.3 Sequenzdiagramm - Komplett</h3>
+        <div class="diagram-container">
+            <img src="diagrams/images/Web Shop Sequence - Komplett.png" alt="Web Shop Sequence - Komplett" class="diagram">
+            <p class="diagram-caption">Abbildung 6.3: Komplettes Sequenzdiagramm (Initial Load, Add, Remove)</p>
+        </div>
+
+        <hr>
+
+        <h2 id="7-verteilungssicht">7. Verteilungssicht</h2>
+
+        <h3>7.1 Deployment-Architektur</h3>
+        <div class="diagram-container">
+            <img src="diagrams/images/Deployment-Architektur - Web Shop.png" alt="Deployment-Architektur - Web Shop" class="diagram">
+            <p class="diagram-caption">Abbildung 7.1: Deployment-Architektur (Development & Production)</p>
+        </div>
+
+        <h3>7.2 Build-Prozess</h3>
+        <div class="diagram-container">
+            <img src="diagrams/images/Build-Prozess - Web Shop.png" alt="Build-Prozess - Web Shop" class="diagram">
+            <p class="diagram-caption">Abbildung 7.2: Build-Prozess als Activity Diagram</p>
+        </div>
+
+        <p><strong>Build-Konfiguration:</strong></p>
+        <ul>
+            <li><strong>Development:</strong> Source Maps, keine Optimierung</li>
+            <li><strong>Production:</strong> Code Minification, Tree Shaking, Asset Optimization</li>
+        </ul>
+
+        <hr>
+
+        <h2 id="8-querschnittliche-konzepte">8. Querschnittliche Konzepte</h2>
+
+        <h3>8.1 Architektur- und Entwurfsmuster</h3>
+        <p><strong>Verwendete Patterns:</strong></p>
+        <ul>
+            <li><strong>Component Pattern:</strong> Modularisierung der UI in wiederverwendbare Komponenten</li>
+            <li><strong>Event-Driven Communication:</strong> Loose Coupling durch Events</li>
+            <li><strong>Container/Presenter Pattern:</strong> AppComponent als Container, ProductList/Cart als Presenter</li>
+        </ul>
+
+        <h3>8.2 Sicherheit</h3>
+        <ul>
+            <li>Keine Backend-Integration, daher keine Authentifizierung erforderlich</li>
+            <li>Client-seitige Validierung (falls zukünftig erweitert)</li>
+            <li>XSS-Schutz durch Angular's Template-Sanitization</li>
+        </ul>
+
+        <h3>8.3 Fehlerbehandlung</h3>
+        <ul>
+            <li>Aktuell keine explizite Fehlerbehandlung implementiert</li>
+            <li>Empfehlung für zukünftige Erweiterungen: Error Handling Service</li>
+        </ul>
+
+        <h3>8.4 Logging und Monitoring</h3>
+        <ul>
+            <li>Aktuell kein Logging implementiert</li>
+            <li>Browser DevTools für Debugging</li>
+        </ul>
+
+        <h3>8.5 Internationalisierung</h3>
+        <ul>
+            <li>Aktuell nur Deutsch</li>
+            <li>Keine i18n-Implementierung</li>
+        </ul>
+
+        <h3>8.6 Konfiguration</h3>
+        <ul>
+            <li>Produktdaten hardcodiert in ProductListComponent</li>
+            <li>Empfehlung: Auslagern in Service oder Konfigurationsdatei</li>
+        </ul>
+
+        <hr>
+
+        <h2 id="9-architekturentscheidungen">9. Architekturentscheidungen</h2>
+
+        <h3>9.1 ADR-001: Verwendung von Angular als Framework</h3>
+        <p><strong>Status:</strong> <span class="badge badge-success">Akzeptiert</span></p>
+
+        <p><strong>Kontext:</strong><br>
+        Entwicklung einer Web-Shop-Anwendung als Lernbeispiel.</p>
+
+        <p><strong>Entscheidung:</strong><br>
+        Angular 17 wird als Frontend-Framework verwendet.</p>
+
+        <p><strong>Konsequenzen:</strong></p>
+        <ul>
+            <li>✅ Strukturierte, komponenten-basierte Architektur</li>
+            <li>✅ TypeScript für Typsicherheit</li>
+            <li>✅ Umfangreiches Ökosystem</li>
+            <li>⚠️ Lernkurve für Angular-spezifische Konzepte</li>
+            <li>⚠️ Größere Bundle-Größe im Vergleich zu Vanilla JS</li>
+        </ul>
+
+        <h3>9.2 ADR-002: Event-basierte Kommunikation zwischen Komponenten</h3>
+        <p><strong>Status:</strong> <span class="badge badge-success">Akzeptiert</span></p>
+
+        <p><strong>Kontext:</strong><br>
+        Kommunikation zwischen ProductListComponent, AppComponent und CartComponent.</p>
+
+        <p><strong>Entscheidung:</strong><br>
+        Verwendung von Angular @Output() EventEmitter für Parent-Child-Kommunikation.</p>
+
+        <p><strong>Konsequenzen:</strong></p>
+        <ul>
+            <li>✅ Loose Coupling zwischen Komponenten</li>
+            <li>✅ Klare Datenfluss-Richtung</li>
+            <li>✅ Einfach zu verstehen und zu testen</li>
+            <li>⚠️ Bei komplexeren Anwendungen könnte State Management (z.B. NgRx) sinnvoll sein</li>
+        </ul>
+
+        <h3>9.3 ADR-003: Lokales State Management im AppComponent</h3>
+        <p><strong>Status:</strong> <span class="badge badge-success">Akzeptiert</span></p>
+
+        <p><strong>Kontext:</strong><br>
+        Verwaltung des Warenkorb-Zustands.</p>
+
+        <p><strong>Entscheidung:</strong><br>
+        Warenkorb-State wird direkt im AppComponent verwaltet.</p>
+
+        <p><strong>Konsequenzen:</strong></p>
+        <ul>
+            <li>✅ Einfach für kleine Anwendungen</li>
+            <li>✅ Keine zusätzlichen Dependencies</li>
+            <li>⚠️ Bei größeren Anwendungen könnte ein State Management Service sinnvoll sein</li>
+            <li>⚠️ State ist nicht persistent (verloren bei Seiten-Reload)</li>
+        </ul>
+
+        <hr>
+
+        <h2 id="10-qualitätsanforderungen">10. Qualitätsanforderungen</h2>
+
+        <h3>10.1 Qualitätsbaum</h3>
+        <pre><code>Qualität
+├── Funktionalität
+│   ├── Produktliste anzeigen ✓
+│   ├── Produkt zum Warenkorb hinzufügen ✓
+│   ├── Produkt aus Warenkorb entfernen ✓
+│   └── Gesamtsumme berechnen ✓
+├── Benutzerfreundlichkeit
+│   ├── Intuitive Bedienung ✓
+│   └── Responsive Design (teilweise)
+├── Wartbarkeit
+│   ├── Klare Komponentenstruktur ✓
+│   └── Dokumentierter Code (teilweise)
+└── Performance
+    ├── Schnelle Ladezeiten ✓
+    └── Effiziente Rendering-Zyklen ✓</code></pre>
+
+        <h3>10.2 Qualitätsszenarien</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Szenario</th>
+                    <th>Stimulus</th>
+                    <th>Artefakt</th>
+                    <th>Umgebung</th>
+                    <th>Reaktion</th>
+                    <th>Maß</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Produkt hinzufügen</td>
+                    <td>Benutzer klickt Button</td>
+                    <td>ProductListComponent</td>
+                    <td>Normal</td>
+                    <td>Produkt erscheint im Warenkorb</td>
+                    <td>&lt; 100ms</td>
+                </tr>
+                <tr>
+                    <td>Gesamtsumme berechnen</td>
+                    <td>Warenkorb ändert sich</td>
+                    <td>CartComponent</td>
+                    <td>Normal</td>
+                    <td>Gesamtsumme wird aktualisiert</td>
+                    <td>&lt; 50ms</td>
+                </tr>
+                <tr>
+                    <td>Initiale Ladezeit</td>
+                    <td>Seite wird geladen</td>
+                    <td>Browser</td>
+                    <td>Normal</td>
+                    <td>Seite ist vollständig geladen</td>
+                    <td>&lt; 2s</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <hr>
+
+        <h2 id="11-risiken-und-technische-schulden">11. Risiken und technische Schulden</h2>
+
+        <h3>11.1 Risiken</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Risiko</th>
+                    <th>Wahrscheinlichkeit</th>
+                    <th>Auswirkung</th>
+                    <th>Maßnahme</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>State-Verlust bei Reload</td>
+                    <td>Hoch</td>
+                    <td>Mittel</td>
+                    <td>LocalStorage/SessionStorage implementieren</td>
+                </tr>
+                <tr>
+                    <td>Keine Validierung</td>
+                    <td>Mittel</td>
+                    <td>Niedrig</td>
+                    <td>Input-Validierung hinzufügen</td>
+                </tr>
+                <tr>
+                    <td>Hardcodierte Produktdaten</td>
+                    <td>Hoch</td>
+                    <td>Niedrig</td>
+                    <td>Service für Produktdaten implementieren</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>11.2 Technische Schulden</h3>
+        <ol>
+            <li><strong>Hardcodierte Produktdaten</strong>
+                <ul>
+                    <li><strong>Aktuell:</strong> Produkte sind direkt in ProductListComponent definiert</li>
+                    <li><strong>Empfehlung:</strong> ProductService implementieren</li>
+                    <li><strong>Aufwand:</strong> Niedrig</li>
+                </ul>
+            </li>
+            <li><strong>Keine Persistenz</strong>
+                <ul>
+                    <li><strong>Aktuell:</strong> Warenkorb geht bei Reload verloren</li>
+                    <li><strong>Empfehlung:</strong> LocalStorage für Warenkorb-Persistenz</li>
+                    <li><strong>Aufwand:</strong> Niedrig</li>
+                </ul>
+            </li>
+            <li><strong>Fehlende Fehlerbehandlung</strong>
+                <ul>
+                    <li><strong>Aktuell:</strong> Keine explizite Fehlerbehandlung</li>
+                    <li><strong>Empfehlung:</strong> Error Handling Service</li>
+                    <li><strong>Aufwand:</strong> Mittel</li>
+                </ul>
+            </li>
+            <li><strong>Keine Tests</strong>
+                <ul>
+                    <li><strong>Aktuell:</strong> Keine Unit-Tests vorhanden</li>
+                    <li><strong>Empfehlung:</strong> Jasmine/Karma Tests implementieren</li>
+                    <li><strong>Aufwand:</strong> Hoch</li>
+                </ul>
+            </li>
+            <li><strong>Styling könnte verbessert werden</strong>
+                <ul>
+                    <li><strong>Aktuell:</strong> Inline Styles in Komponenten</li>
+                    <li><strong>Empfehlung:</strong> Separate SCSS-Dateien oder CSS-Framework</li>
+                    <li><strong>Aufwand:</strong> Niedrig</li>
+                </ul>
+            </li>
+        </ol>
+
+        <hr>
+
+        <h2 id="12-glossar">12. Glossar</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Begriff</th>
+                    <th>Erklärung</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Angular</strong></td>
+                    <td>TypeScript-basiertes Frontend-Framework von Google</td>
+                </tr>
+                <tr>
+                    <td><strong>Component</strong></td>
+                    <td>Wiederverwendbare UI-Einheit in Angular</td>
+                </tr>
+                <tr>
+                    <td><strong>EventEmitter</strong></td>
+                    <td>Angular-Mechanismus für Event-basierte Kommunikation</td>
+                </tr>
+                <tr>
+                    <td><strong>NgModule</strong></td>
+                    <td>Angular-Modul zur Gruppierung von Komponenten, Services, etc.</td>
+                </tr>
+                <tr>
+                    <td><strong>Product</strong></td>
+                    <td>Datenstruktur für ein Produkt (id, name, price)</td>
+                </tr>
+                <tr>
+                    <td><strong>State Management</strong></td>
+                    <td>Verwaltung des Anwendungszustands</td>
+                </tr>
+                <tr>
+                    <td><strong>TypeScript</strong></td>
+                    <td>Typisierte Superset-Sprache von JavaScript</td>
+                </tr>
+                <tr>
+                    <td><strong>Warenkorb (Cart)</strong></td>
+                    <td>Sammlung von ausgewählten Produkten</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <hr>
+
+        <h2>Anhang</h2>
+
+        <h3>A.1 Projektstruktur</h3>
+        <pre><code>web-shop/
+├── src/
+│   ├── app/
+│   │   ├── app.component.ts          # Root-Komponente
+│   │   ├── app.module.ts             # Angular-Modul
+│   │   └── components/
+│   │       ├── product-list/
+│   │       │   └── product-list.component.ts
+│   │       └── cart/
+│   │           └── cart.component.ts
+│   ├── assets/                       # Statische Assets
+│   ├── index.html                    # HTML-Einstiegspunkt
+│   ├── main.ts                       # TypeScript-Einstiegspunkt
+│   └── styles.scss                   # Globale Styles
+├── angular.json                      # Angular-Konfiguration
+├── package.json                      # Dependencies
+├── tsconfig.json                     # TypeScript-Konfiguration
+└── sequence.puml                     # Sequenzdiagramm</code></pre>
+
+        <h3>A.2 Abhängigkeiten</h3>
+        <p><strong>Produktions-Dependencies:</strong></p>
+        <ul>
+            <li>@angular/core: ^17.2.0</li>
+            <li>@angular/common: ^17.2.0</li>
+            <li>@angular/forms: ^17.2.0</li>
+            <li>@angular/platform-browser: ^17.2.0</li>
+            <li>rxjs: ~7.8.0</li>
+            <li>zone.js: ~0.14.3</li>
+        </ul>
+
+        <p><strong>Entwicklungs-Dependencies:</strong></p>
+        <ul>
+            <li>@angular/cli: ^17.2.0</li>
+            <li>@angular-devkit/build-angular: ^17.2.0</li>
+            <li>typescript: ^5.3.2</li>
+        </ul>
+
+        <h3>A.3 Build und Deployment</h3>
+        <p><strong>Development:</strong></p>
+        <pre><code>npm install
+ng serve</code></pre>
+
+        <p><strong>Production Build:</strong></p>
+        <pre><code>ng build --configuration production</code></pre>
+
+        <p><strong>Output:</strong> <code>dist/web-shop/</code> (statische Dateien für Web-Server)</p>
+
+        <hr>
+
+        <p style="text-align: center; color: #666; margin-top: 40px;">
+            <strong>Dokumentationsversion:</strong> 1.0<br>
+            <strong>Erstellt:</strong> 2024<br>
+            <strong>Letzte Aktualisierung:</strong> 2024
+        </p>
+    </div>
+</body>
+</html>
+

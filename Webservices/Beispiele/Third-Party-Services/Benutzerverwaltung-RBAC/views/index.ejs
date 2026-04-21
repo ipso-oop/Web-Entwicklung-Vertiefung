@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head><title>Startseite</title></head>
+<body>
+  <h1>🌍 Willkommen</h1>
+  <% if (user) { %>
+    <p>Hallo <%= user.name %></p>
+    <a href="/user">Benutzerbereich</a><br>
+    <a href="/admin">Adminbereich</a><br>
+    <a href="/logout">Logout</a>
+  <% } else { %>
+    <a href="/login">Login</a>
+  <% } %>
+</body>
+</html>

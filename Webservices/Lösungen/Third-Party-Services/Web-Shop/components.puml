@@ -1,0 +1,22 @@
+@startuml
+package "Webshop Frontend (Angular)" {
+  [ProductListComponent] as ProductListComponent
+  [CartComponent] as CartComponent
+  [PaymentService] as PaymentService
+  [ShopComponent] as ShopComponent
+  [AppComponent] as AppComponent
+}
+
+package "Backend (Express/Node.js)" {
+  [ExpressServer] as ExpressServer
+  [StripeSDK] as StripeSDK
+}
+
+AppComponent --> ShopComponent : enthält
+ShopComponent --> ProductListComponent : enthält
+ShopComponent --> CartComponent : enthält
+CartComponent --> PaymentService : nutzt
+PaymentService --> ExpressServer : HTTP-Request /api/create-checkout-session
+ExpressServer --> StripeSDK : verwendet
+
+@enduml 

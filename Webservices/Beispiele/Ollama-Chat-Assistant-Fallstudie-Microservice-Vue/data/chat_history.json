@@ -98,5 +98,25 @@
     "role": "bot",
     "content": "It looks like you're testing the waters!\n\nHow can I assist you today? Are you looking to learn something new in web development, cyber security, or perhaps object-oriented programming? Or maybe you'd like to discuss software engineering concepts? Let me know, and I'll do my best to help!",
     "timestamp": "2025-05-13T18:43:19.187Z"
+  },
+  {
+    "role": "user",
+    "content": "test",
+    "timestamp": "2025-11-24T15:32:37.945Z"
+  },
+  {
+    "role": "bot",
+    "content": "It looks like you're testing if the system is working properly. Everything seems to be in order!\n\nWhat would you like to discuss or work on today? We could:\n\n1. Build a simple web application\n2. Learn about Cyber Security best practices\n3. Dive into Object-Oriented Programming concepts\n4. Explore Software Engineering methodologies\n\nLet me know what sparks your interest!",
+    "timestamp": "2025-11-24T15:38:40.163Z"
+  },
+  {
+    "role": "user",
+    "content": "test",
+    "timestamp": "2025-11-24T17:30:40.030Z"
+  },
+  {
+    "role": "user",
+    "content": "test",
+    "timestamp": "2025-11-24T17:34:09.344Z"
   }
 ]

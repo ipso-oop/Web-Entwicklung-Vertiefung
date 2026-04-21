@@ -1,0 +1,27 @@
+@startuml Laufzeitsicht - Produkt aus Warenkorb entfernen
+
+actor User
+participant "CartComponent" as Cart
+participant "AppComponent" as App
+
+User -> Cart: Klickt "Entfernen"
+activate Cart
+
+Cart -> Cart: onRemoveFromCart(productId)
+Cart -> App: emit(removeFromCart, productId)
+deactivate Cart
+activate App
+
+App -> App: removeFromCart(productId)
+note right: cart.filter(item => item.id !== productId)
+
+App -> Cart: [cart] Input Binding
+activate Cart
+
+Cart -> Cart: Calculate totalPrice
+Cart --> User: UI Update
+deactivate Cart
+deactivate App
+
+@enduml
+

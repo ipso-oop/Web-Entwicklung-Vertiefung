@@ -1,5 +1,5 @@
 const express = require('express');
-const stripe = require('stripe')('Add-own-security-key');
+const stripe = require('stripe')('add-your-sk-key-here');
 const cors = require('cors');
 const path = require('path');
 

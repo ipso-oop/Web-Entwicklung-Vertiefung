@@ -58,5 +58,15 @@
     "role": "bot",
     "content": "It looks like you've just sent a test message.\n\nHow can I assist you today? Are you looking to learn about web development, cyber security, object-oriented programming, or software engineering? Do you have a specific question or project in mind? Let me know and I'll do my best to help!",
     "timestamp": "2025-05-09T19:26:07.831Z"
+  },
+  {
+    "role": "user",
+    "content": "Who are you?",
+    "timestamp": "2025-11-24T19:18:09.214Z"
+  },
+  {
+    "role": "bot",
+    "content": "I'm a teacher with expertise in several areas of computer science. My primary focus is on teaching web development, cyber security, object-oriented programming (OOP), and software engineering. I have extensive knowledge in these subjects and enjoy sharing my understanding with students to help them acquire the skills they need to succeed in the tech industry.\n\nI'm here to provide guidance, answer questions, and offer advice on a wide range of topics related to web development, cyber security, OOP, and software engineering. Whether you're a beginner looking for an introduction to these subjects or an experienced developer seeking to improve your skills, I'm here to help.\n\nWhat specific topic would you like to discuss? Do you have any questions about web development, cyber security, OOP, or software engineering?",
+    "timestamp": "2025-11-24T19:19:08.421Z"
   }
 ]
