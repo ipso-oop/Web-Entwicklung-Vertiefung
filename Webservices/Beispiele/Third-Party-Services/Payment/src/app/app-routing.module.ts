@@ -4,9 +4,7 @@ import { PaymentComponent } from './payment.component';
 
 const routes: Routes = [
   { path: 'payment', component: PaymentComponent },
-  { path: '', redirectTo: '/payment', pathMatch: 'full' },
-  { path: 'success', redirectTo: '/payment', pathMatch: 'full' },
-  { path: 'cancel', redirectTo: '/payment', pathMatch: 'full' }
+  { path: '', redirectTo: '/payment', pathMatch: 'full' }
 ];
 
 @NgModule({

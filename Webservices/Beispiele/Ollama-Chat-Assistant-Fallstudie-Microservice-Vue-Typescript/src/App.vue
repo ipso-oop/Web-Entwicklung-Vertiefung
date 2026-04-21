@@ -54,7 +54,7 @@ export default defineComponent({
     const currentModel = ref('local')
     const uploadedFiles = ref<Map<string, File>>(new Map())
     const messages = ref<Message[]>([])
-    const messagesEndRef = ref<HTMLElement | null>(null)//ScrollReferenz zum scrollen
+    const messagesEndRef = ref<HTMLElement | null>(null)
 
     const scrollToBottom = () => {
       messagesEndRef.value?.scrollIntoView({ behavior: "smooth" })
